@@ -16,7 +16,7 @@
             <h2>Bike {{bike._id}}</h2>
             <p *ngIf="bike.bike!=null" >Disponível</p>
             <p *ngIf="bike.bike==null" >Indisponível</p>
-            <button *ngIf="bike.bike!=null" ion-button color="secondary" round item-end>Liberar</button>
+            <button *ngIf="bike.bike!=null" ion-button color="secondary" block (click)="confirmation()" round item-end>Liberar</button>
         </ion-item>
     </ion-list>
 </ion-content>

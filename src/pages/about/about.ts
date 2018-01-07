@@ -41,5 +41,8 @@ export class AboutPage {
         }
 
     }
+    confirmation () {
+        this.station.bikes[1].bike=null;
+    }
 
 }
