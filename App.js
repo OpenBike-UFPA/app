@@ -13,7 +13,7 @@ export default class App extends React.Component {
                 const list = [
                                   {
                                     name: 'Amy Farha',
-                                    avatar_url: 'https://www.w3schools.com/w3css/img_avatar3.png',
+                                    avatar_url: 'https://www.w3schools.com/w3css/img_avatr3.png',
                                     subtitle: 'Vice President'
                                   },
                                   {
@@ -57,14 +57,15 @@ export default class App extends React.Component {
 
                 return(
                         <View>
+
                         <List containerStyle={{marginBottom: 20}}>
-                          {
-                            list.map((l, i) => (
-                              <ListItemRoubado avatar_url={l.avatar_url}
-                    key={i}
-                    name={l.name}
-                    subtitle={l.subtitle}
-                     />
+                        {
+                            station.bikes.map((bike, i) => (
+                                    <ListItemRoubado avatar_url='./bike_available.png'
+                                    key={i}
+                                    name={bike._id}
+                                    subtitle={bike.subtitle}
+                                    />
                             ))
                           }
                         </List>
@@ -73,18 +74,18 @@ export default class App extends React.Component {
         }
 }
 
-styles = StyleSheet.create({
-  subtitleView: {
-    flexDirection: 'row',
-    paddingLeft: 10,
-    paddingTop: 5
-  },
-  ratingImage: {
-    height: 50,
-    width: 100
-  },
-  ratingText: {
-    paddingLeft: 10,
-    color: 'grey'
-  }
-})
+// styles = StyleSheet.create({
+//   subtitleView: {
+//     flexDirection: 'row',
+//     paddingLeft: 10,
+//     paddingTop: 5
+//   },
+//   ratingImage: {
+//     height: 50,
+//     width: 100
+//   },
+//   ratingText: {
+//     paddingLeft: 10,
+//     color: 'grey'
+//   }
+// })
