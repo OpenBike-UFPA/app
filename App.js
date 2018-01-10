@@ -58,13 +58,14 @@ export default class App extends React.Component {
                 return(
                         <View>
 
-                        <List containerStyle={{marginBottom: 20}}>
+                        <List>
                         {
                             station.bikes.map((bike, i) => (
                                     <ListItemRoubado avatar_url='./bike_available.png'
                                     key={i}
                                     name={bike._id}
-                                    subtitle={bike.subtitle}
+                                    subtitle={bike.bike!=null ? 'Disponível' : 'Indisponível'}
+                                    color= {bike.bike!=null ? 'green' : 'red'}
                                     />
                             ))
                           }
