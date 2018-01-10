@@ -6,7 +6,13 @@ export default function (props) {
           roundAvatar
           avatar={{uri: props.avatar_url}}
           title={props.name}
-          containerStyle={{height: 128}}
+          titleStyle={{fontSize:20}}
+          subtitle={props.subtitle}
+          subtitleStyle={{fontSize:15}}
+          rightTitle='Liberar'
+          rightTitleStyle={{color: '#6da30d'}}
+          rightIcon={{name:'send', color:'#6da30d'}}
+          containerStyle={{height: 100}}
           avatarStyle={{height:80, width:80}}
           avatarContainerStyle={{height:80, width:80}}
 

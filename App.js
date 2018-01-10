@@ -22,16 +22,53 @@ export default class App extends React.Component {
                                     subtitle: 'Vice Chairman'
                                   }
                           ];
+
+                const station = {
+                      "name" : "teste",
+                      "q_slots" : 5,
+                      "address" : "rua do teste",
+                      "cep" : 6664000,
+                      "status" : "online",
+                      "geo" : {"lat": 45, "lng": 50},
+                      "bikes":
+                          [
+                              {
+                                  "_id": 1,
+                                  "bike": 5895
+                              },
+                              {
+                                  "_id": 2,
+                                  "bike": 548
+                              },
+                              {
+                                  "_id": 3,
+                                  "bike": null
+                              },
+                              {
+                                  "_id": 4,
+                                  "bike": null
+                              },
+                              {
+                                  "_id": 5,
+                                  "bike": null
+                              }
+                          ]
+                };
+
                 return(
+                        <View>
                         <List containerStyle={{marginBottom: 20}}>
                           {
                             list.map((l, i) => (
                               <ListItemRoubado avatar_url={l.avatar_url}
                     key={i}
-                    name={l.name} />
+                    name={l.name}
+                    subtitle={l.subtitle}
+                     />
                             ))
                           }
                         </List>
+                        </View>
                 );
         }
 }
