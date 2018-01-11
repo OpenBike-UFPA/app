@@ -22,6 +22,21 @@ export default class App extends React.Component {
               });
            }
 
+           LendingBike() {
+                //    fetch('https://mywebsite.com/endpoint/', {
+                //           method: 'POST',
+                //           headers: {
+                //             'Accept': 'application/json',
+                //             'Content-Type': 'application/json',
+                //           },
+                //           body: JSON.stringify({
+                //             firstParam: 'yourValue',
+                //             secondParam: 'yourOtherValue',
+                //           })
+                //   });
+                console.log("Ta chamando a função");
+           }
+
         render() {
                 state = {
                         data: '',
@@ -58,7 +73,7 @@ export default class App extends React.Component {
                               }
                           ]
                 };
-                
+
                 return(
                         <ScrollView>
 
