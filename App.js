@@ -1,32 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-//import {Station} from './Station';
-import { List } from 'react-native-elements';
+import { StyleSheet, Text, ScrollView } from 'react-native';
+import { List, Card } from 'react-native-elements';
 import ListItemRoubado from './ListItemRoubado'
 
 export default class App extends React.Component {
-        componentDidMonth() {
-                fetch();
 
-        }
+        componentDidMount = () => {
+              fetch('https://jsonplaceholder.typicode.com/posts/1', {
+                 method: 'GET'
+              })
+              .then((response) => response.json())
+              .then((responseJson) => {
+                 console.log(responseJson);
+                 this.setState({
+                    data: responseJson,
+                    isLoad: true
+                 })
+              })
+              .catch((error)=> {
+                 console.error(error);
+              });
+           }
+
         render() {
-                const list = [
-                                  {
-                                    name: 'Amy Farha',
-                                    avatar_url: 'https://www.w3schools.com/w3css/img_avatr3.png',
-                                    subtitle: 'Vice President'
-                                  },
-                                  {
-                                    name: 'Chris Jackson',
-                                    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-                                    subtitle: 'Vice Chairman'
-                                  }
-                          ];
-
+                state = {
+                        data: '',
+                        isLoad: false
+                }
                 const station = {
-                      "name" : "teste",
+                      "name" : "ITEC",
                       "q_slots" : 5,
-                      "address" : "rua do teste",
+                      "address" : "Em frente ao Sorvete, no terceiro portão da UFPA",
                       "cep" : 6664000,
                       "status" : "online",
                       "geo" : {"lat": 45, "lng": 50},
@@ -54,23 +58,40 @@ export default class App extends React.Component {
                               }
                           ]
                 };
-
+                
                 return(
-                        <View>
+                        <ScrollView>
+
+                        <Card
+                          title={"Estação " +station.name}
+                          titleStyle={{fontSize: 30}}
+                          image={require('./station.jpg')}
+                          >
+                          <Text style={{marginBottom: 10, fontSize: 15}}>
+                            Endereço: {station.address}
+                          </Text>
+                          <Text style={{marginBottom: 10, fontSize: 15}}>
+                            Quantidade de Bicicletas: {station.q_slots}
+                          </Text>
+                          <Text style={{marginBottom: 10, fontSize: 15}}>
+                            Status: {station.status + " AQUI A MÁGICA "+state.data.body}
+                          </Text>
+                        </Card>
 
                         <List>
                         {
                             station.bikes.map((bike, i) => (
-                                    <ListItemRoubado avatar_url='./bike_available.png'
+                                    <ListItemRoubado
                                     key={i}
                                     name={bike._id}
                                     subtitle={bike.bike!=null ? 'Disponível' : 'Indisponível'}
                                     color= {bike.bike!=null ? 'green' : 'red'}
+                                    disable={bike.bike!=null ? false : true}
                                     />
                             ))
                           }
                         </List>
-                        </View>
+                        </ScrollView>
                 );
         }
 }
