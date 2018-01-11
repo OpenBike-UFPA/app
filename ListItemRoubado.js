@@ -1,6 +1,6 @@
 import React from 'react';
-import { ListItem } from 'react-native-elements';
-import { Icon } from 'react-native-elements';
+import { ListItem, Icon } from 'react-native-elements';
+import { Alert } from 'react-native';
 
 export default function (props) {
         return (<ListItem
@@ -17,5 +17,8 @@ export default function (props) {
           rightTitleStyle={{color: '#6da30d'}}
           rightIcon={{name:'send', color:'#6da30d'}}
           disabled={props.disable}
+          onPress={lendingConf = () => {
+                  Alert.alert('You need to...')
+          }}
         />)
 }

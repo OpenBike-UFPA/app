@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
-import { List, Card } from 'react-native-elements';
+import { StyleSheet, Text, ScrollView, Alert } from 'react-native';
+import { List, Card, Tile } from 'react-native-elements';
 import ListItemRoubado from './ListItemRoubado'
 
 export default class App extends React.Component {
@@ -77,21 +77,23 @@ export default class App extends React.Component {
                 return(
                         <ScrollView>
 
-                        <Card
+                        <Tile
+                          imageSrc={require('./station.jpg')}
                           title={"Estação " +station.name}
-                          titleStyle={{fontSize: 30}}
-                          image={require('./station.jpg')}
-                          >
-                          <Text style={{marginBottom: 10, fontSize: 15}}>
-                            Endereço: {station.address}
-                          </Text>
-                          <Text style={{marginBottom: 10, fontSize: 15}}>
-                            Quantidade de Bicicletas: {station.q_slots}
-                          </Text>
-                          <Text style={{marginBottom: 10, fontSize: 15}}>
-                            Status: {station.status + " AQUI A MÁGICA "+state.data.body}
-                          </Text>
-                        </Card>
+                          titleStyle={{textAlign: 'center'}}
+                          contentContainerStyle={{height: 70}}
+                        >
+                        </Tile>
+
+                        <Text style={{marginLeft: 15, fontSize: 15}}>
+                        Endereço: {station.address}
+                        </Text>
+                        <Text style={{marginLeft: 15, marginBottom: 10, fontSize: 15}}>
+                        Quantidade de Bicicletas: {station.q_slots}
+                        </Text>
+                        <Text style={{marginLeft: 15, marginBottom: 10, fontSize: 15}}>
+                        Status: {station.status + " AQUI A MÁGICA "+state.data.body}
+                        </Text>
 
                         <List>
                         {
