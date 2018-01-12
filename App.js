@@ -39,9 +39,10 @@ export default class App extends React.Component {
 
         render() {
                 state = {
-                        data: '',
+                        data: {},
                         isLoad: false
                 }
+
                 const station = {
                       "name" : "ITEC",
                       "q_slots" : 5,
@@ -53,11 +54,11 @@ export default class App extends React.Component {
                           [
                               {
                                   "_id": 1,
-                                  "bike": 5895
+                                  "bike": "5895"
                               },
                               {
                                   "_id": 2,
-                                  "bike": 548
+                                  "bike": "548"
                               },
                               {
                                   "_id": 3,
@@ -104,6 +105,9 @@ export default class App extends React.Component {
                                     subtitle={bike.bike!=null ? 'Disponível' : 'Indisponível'}
                                     color= {bike.bike!=null ? 'green' : 'red'}
                                     disable={bike.bike!=null ? false : true}
+                                    id_bike={bike.bike}
+                                    id_user='1234567'
+                                    id_station='1234567'
                                     />
                             ))
                           }

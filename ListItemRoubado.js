@@ -18,7 +18,29 @@ export default function (props) {
           rightIcon={{name:'send', color:'#6da30d'}}
           disabled={props.disable}
           onPress={lendingConf = () => {
-                  Alert.alert('You need to...')
+                  Alert.alert('Empréstimo',
+                   'Você confirma o empréstimo da bicicleta?',
+                   [
+                       {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                       {text: 'Emprestar', onPress: () =>
+                       fetch('http://192.168.1.3:3000/loans/', {
+                         method: 'POST',
+                         headers: {
+                           'Accept': 'application/json',
+                           'Content-Type': 'application/json',
+                         },
+                         body: JSON.stringify({
+                        	"type": "empréstimo",
+                          	"id_user": props.id_user,
+                          	"id_station": props.id_station,
+                          	"id_bike": props.id_bike,
+                          	"n_slot": props.name
+                            })
+                        })
+
+                        },
+                   ]
+                    )
           }}
         />)
 }
