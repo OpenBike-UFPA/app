@@ -9,43 +9,30 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: {
-        station: {},
-        body: ""
       },
       isLoad: false
     };
   }
 
   componentDidMount() {
-    fetch("http://200.239.93.85:3000/station/", {
-      method: "GET"
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        console.log(responseJson);
-        this.setState({
-          data: responseJson,
-          isLoad: true
-        });
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    this.timer = setInterval(()=> this.getStation(), 60000)
   }
 
-  LendingBike() {
-    //    fetch('https://mywebsite.com/endpoint/', {
-    //           method: 'POST',
-    //           headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //           },
-    //           body: JSON.stringify({
-    //             firstParam: 'yourValue',
-    //             secondParam: 'yourOtherValue',
-    //           })
-    //   });
-    console.log("Ta chamando a função");
+  async getStation() {
+          fetch("http://200.239.93.85:3000/stations/5a5cfb2b2cdfcc0011086179", {
+            method: "GET"
+          })
+            .then(response => response.json())
+            .then(responseJson => {
+              console.log(responseJson);
+              this.setState({
+                data: {station:responseJson},
+                isLoad: true
+              });
+            })
+            .catch(error => {
+              console.error(error);
+            });
   }
 
   render() {
@@ -80,7 +67,6 @@ class App extends React.Component {
     //   ]
     // };
 
-    // const { isLoad, data: { station, body } } = this.state;
     const { isLoad, data: { station } } = this.state;
 
     return (
