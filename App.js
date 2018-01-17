@@ -15,11 +15,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(()=> this.getStation(), 60000)
+    this.timer = setInterval(()=> this.getStation(), 5000)
   }
 
   async getStation() {
-          fetch("http://200.239.93.85:3000/stations/5a5cfb2b2cdfcc0011086179", {
+          fetch("http://200.239.93.85:3000/stations/5a5fd0312fcc3e0010adbcba", {
             method: "GET"
           })
             .then(response => response.json())
@@ -100,8 +100,8 @@ class App extends React.Component {
                   color={bike.bike != null ? "green" : "red"}
                   disable={bike.bike != null ? false : true}
                   id_bike={bike.bike}
-                  id_user="1234567" //PREENCHER INFO DO USUÁRIO E ESTAÇÂO AQUI
-                  id_station="1234567"
+                  id_user="02402402424" //PREENCHER INFO DO USUÁRIO E ESTAÇÂO AQUI
+                  id_station="5a5fd0312fcc3e0010adbcba"
                 />
               ))}
             </List>

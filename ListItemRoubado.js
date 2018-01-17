@@ -23,7 +23,7 @@ export default function (props) {
                    [
                        {text: 'Cancelar', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
                        {text: 'Emprestar', onPress: () =>
-                       fetch('http://192.168.1.3:3000/loans/', {
+                       fetch('http://200.239.93.85:3000/loans/', {
                          method: 'POST',
                          headers: {
                            'Accept': 'application/json',
